@@ -1,6 +1,6 @@
-import NotePreview from "@/app/notes/[id]/NotePreview";
+import NotePreview from "./NotePreview";
 import { fetchNoteById } from "@/lib/api";
-import css from "@/app/notes/[id]/NotePreview.module.css"
+import css from "./NotePreview.module.css"
 
 type Props = {
   params: Promise<{ id: string }>;

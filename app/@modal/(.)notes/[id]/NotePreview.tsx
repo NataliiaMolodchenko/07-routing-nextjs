@@ -1,7 +1,7 @@
 'use client';
 import css from "./NotePreview.module.css";
 import { useRouter } from "next/navigation";
-import Modal from "../../../components/Modal/Modal";
+import Modal from "@/components/Modal/Modal";
 
 type Props = {
     children: React.ReactNode;
