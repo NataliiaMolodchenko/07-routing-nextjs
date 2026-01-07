@@ -1,7 +1,7 @@
 import { fetchNotes } from "@/lib/api";
 import type { NoteTag } from "@/types/note";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
-import FilterClient from "./Filter.client";
+import NotesClient from "./Notes.client";
 
 const PER_PAGE = 12;
 
@@ -22,7 +22,7 @@ export default async function NotesByTag({params}:Props) {
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <FilterClient tag={tag}/>
+            <NotesClient tag={tag}/>
         </HydrationBoundary>
     )
 }

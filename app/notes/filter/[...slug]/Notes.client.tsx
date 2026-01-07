@@ -10,21 +10,28 @@ import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
+import type { NoteTag } from '@/types/note';
 
 const PER_PAGE = 12;
 
-function NotesClient() {
+type Props = {
+  tag?: NoteTag;
+};
+
+function NotesClient({tag}: Props) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [debouncedSearch] = useDebounce(search, 500);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {data, isLoading, isError} = useQuery({
-    queryKey: ["notes", page, debouncedSearch],
+    queryKey: ["notes", page, debouncedSearch, tag ?? "all"],
     queryFn: () => fetchNotes(
       page,
       PER_PAGE,
-      debouncedSearch || undefined),
+      debouncedSearch || undefined,
+      tag
+    ),
     placeholderData: keepPreviousData,
   });
   
